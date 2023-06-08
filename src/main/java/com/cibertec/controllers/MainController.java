@@ -1,36 +1,49 @@
 package com.cibertec.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cibertec.models.Tweet;
 import com.cibertec.repositories.TweetDao;
+import com.cibertec.services.TweetService;
 
 @Controller
 public class MainController {
 
 	@Autowired
 	private TweetDao tweetRepository;
+	@Autowired
+	private TweetService tweetService;
 	
-	@GetMapping("/")
+	/*@GetMapping("/")
 	public String login() {
 		return "login";
 	}
 	
-	@GetMapping("/home")
+	/*@GetMapping("/home")
 	public String home(){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		return auth.getAuthorities().stream().count() > 0 ? "home" : "access_denied";
+	}*/
+	
+	@RequestMapping("/home")
+	public String home(Model model) {
+		
+		List<Tweet> tweets = tweetService.buscarTodos();
+		model.addAttribute("tweets", tweets);
+		return "home";
 	}
-	
-	
 	
 	@GetMapping("/createTweet")
 	public String createTweet(@ModelAttribute("tweet") Tweet tweet) {
