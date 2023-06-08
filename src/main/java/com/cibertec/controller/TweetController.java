@@ -42,16 +42,17 @@ public class TweetController {
 	}
 
 	@RequestMapping("/guardar")
-	public String grabar(@ModelAttribute("tweet") 
-	Tweet tweet, BindingResult result, Model model,
+	public String grabar(@RequestParam("txtCodigo") int cod,
+		@RequestParam("idMensaje") String men,	Model model,
 	RedirectAttributes redirect) {
 		try {
 			Tweet objTweet = new Tweet();
 			
+			objTweet.setId(cod);
 			objTweet.setAuthor("hola");
 			Date defaultValue = new Date(0);
 			objTweet.setTime(defaultValue);
-			objTweet.setContent("holaaa");
+			objTweet.setContent(men);
 
 			serviTweet.guardar(objTweet);
 
