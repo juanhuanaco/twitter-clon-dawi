@@ -30,6 +30,13 @@ public class MainController {
 		return auth.getAuthorities().stream().count() > 0 ? "home" : "access_denied";
 	}
 	
+	@RequestMapping("/home")
+	public String home(Model model) {
+		
+		List<Tweet> tweets = tweetService.buscarTodos();
+		model.addAttribute("tweets", tweets);
+		return "home";
+	}
 	
 	
 	@GetMapping("/createTweet")
