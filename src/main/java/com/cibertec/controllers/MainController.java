@@ -26,7 +26,8 @@ public class MainController {
 	
 	@GetMapping("/home")
 	public String home(){
-		return "home";
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		return auth.getAuthorities().stream().count() > 0 ? "home" : "access_denied";
 	}
 	
 	
