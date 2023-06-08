@@ -19,7 +19,7 @@ public class MainController {
 	@Autowired
 	private TweetDao tweetRepository;
 	
-	@GetMapping("/")
+	@GetMapping("/login")
 	public String login() {
 		return "login";
 	}

@@ -17,11 +17,12 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/resources/**").permitAll()
-		.antMatchers("/registro").hasAnyRole().anyRequest().authenticated()
+		http.authorizeRequests().antMatchers("/**/**").permitAll()
+		.antMatchers("/home").hasRole("USER").anyRequest().authenticated()
 		.and()
 		.formLogin()
 		.loginPage("/login")
+		.successForwardUrl("/home")
 		.permitAll()
 		.and()
 		.logout().permitAll();
@@ -32,8 +33,9 @@ public class SecurityConfig {
 	@Bean
 	public InMemoryUserDetailsManager userDetailsService() {
 		UserDetails user = User.builder()
-				.username("usuario1")
-				.password("u123")
+				.username("Miguelito Barraza")
+				.password(passwordEncoder().encode("u123"))
+				.roles("USER")
 				.build();
 		
 		return new InMemoryUserDetailsManager(user);
