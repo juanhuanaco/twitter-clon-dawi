@@ -16,16 +16,20 @@
 	    <div class="mb-0">
 	            <label class="col-form-label">Usuario: <span>Mario Mendez</span> </label> 
 	        </div>
-	    <form th:action="" method="post" th:object="" class="py-3 row">
+	    <form th:action="@{/tweet/guardar}" method="post" th:object="${tweet}" class="py-3 row">
+	    	<div class="mb-3" hidden>
+	            <label class="col-form-label">cod:</label> 
+	            <input type="text" class="form-control" name="txtCodigo" value="0" id="txtCodigo"> 		
+	        </div>
 	        <div class="mb-3">
 	            <label class="col-form-label">Ingrese el mensaje:</label> 
-	            <textarea class="form-control border-secondary" rows="2" id="idMensaje" name="idMensaje" required></textarea>
+	            <textarea class="form-control border-secondary" rows="2" id="idMensaje" name="idMensaje" th:field="*{content}"  required></textarea>
     			<span id="error-msg" class="error text-danger"></span>			
 	        </div>
 	        <hr>
 	        <div class="col-md-12 d-flex justify-content-center">
 	            <button type="submit" class="btn btn-primary me-2">Crear Tweet</button>
-	            <a th:href="" class="btn btn-danger">Cancelar</a>
+	            <a class="btn btn-danger">Cancelar</a>
 	        </div>
 	    </form>
 	</div>
