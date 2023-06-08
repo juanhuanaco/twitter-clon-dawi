@@ -22,7 +22,7 @@ public class SecurityConfig {
 		.and()
 		.formLogin()
 		.loginPage("/login")
-		.successForwardUrl("/home")
+		.defaultSuccessUrl("/home")
 		.permitAll()
 		.and()
 		.logout().permitAll();

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cibertec.models.Tweet;
-import com.cibertec.repository.TweetRepository;
+import com.cibertec.repositories.TweetRepository;
 
 @Service
 public class TweetService {

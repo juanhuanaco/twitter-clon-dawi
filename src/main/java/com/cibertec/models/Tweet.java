@@ -27,7 +27,7 @@ public class Tweet implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_tweet")
-	long id;
+	Long id;
 	@Column(name = "usu_tweet")
 	String author;
 	@Column(name="hora_tweet")

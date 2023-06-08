@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.cibertec.models.Tweet;
-import com.cibertec.repositories.TweetDao;
+import com.cibertec.repositories.TweetRepository;
 
 @Controller
 public class MainController {
 
 	@Autowired
-	private TweetDao tweetRepository;
+	private TweetRepository tweetRepository;
 	
 	@GetMapping("/login")
 	public String login() {
@@ -31,7 +31,7 @@ public class MainController {
 	}
 	
 	
-	
+	/*
 	@GetMapping("/createTweet")
 	public String createTweet(@ModelAttribute("tweet") Tweet tweet) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -53,5 +53,5 @@ public class MainController {
 		return "access_denied";
 		
 	}
-	
+	*/
 }

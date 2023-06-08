@@ -14,13 +14,10 @@
 	    <h5 class="text-center pt-3">Crear Tweet</h5>
 	    <hr>
 	    <div class="mb-0">
-	            <label class="col-form-label">Usuario: <span>Mario Mendez</span> </label> 
+	            <label class="col-form-label">Usuario: <span th:text="${autor}"></span> </label> 
 	        </div>
 	    <form th:action="@{/tweet/guardar}" method="post" class="py-3 row">
-	    	<div class="mb-3">
-	            <label class="col-form-label">cod:</label> 
-	            <input type="text" class="form-control" name="txtCodigo" value="0" id="txtCodigo"> 		
-	        </div>
+	    	
 	        <div class="mb-3">
 	            <label class="col-form-label">Ingrese el mensaje:</label> 
 	            <textarea class="form-control border-secondary" rows="2" id="idMensaje" name="idMensaje"  required></textarea>
@@ -29,7 +26,7 @@
 	        <hr>
 	        <div class="col-md-12 d-flex justify-content-center">
 	            <button type="submit" class="btn btn-primary me-2">Crear Tweet</button>
-	            <a class="btn btn-danger">Cancelar</a>
+	            <a href="/home" class="btn btn-danger">Cancelar</a>
 	        </div>
 	    </form>
 	</div>
