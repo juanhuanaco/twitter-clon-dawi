@@ -1,4 +1,4 @@
-package com.cibertec.service;
+package com.cibertec.services;
 
 import java.util.List;
 
@@ -14,11 +14,12 @@ public class TweetService {
 	@Autowired
 	private TweetRepository repoTweet;
 	
-	public List<Tweet> listarTweet() {
-		return repoTweet.findAll();
-	}
-	
 	public void guardar(Tweet bean) {
 		repoTweet.save(bean);
+	}
+	
+	public List<Tweet> buscarTodos() {
+		// TODO Auto-generated method stub
+		return repoTweet.findAll();
 	}
 }
