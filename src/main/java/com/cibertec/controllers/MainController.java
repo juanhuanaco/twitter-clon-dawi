@@ -32,17 +32,14 @@ public class MainController {
 	}
 	
 	@GetMapping("/home")
-	public String home(){
+	public String home(Model model){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		return auth.getAuthorities().stream().count() > 0 ? "home" : "access_denied";
-	}
-	
-	@RequestMapping("/home")
-	public String home(Model model) {
-		
-		List<Tweet> tweets = tweetService.buscarTodos();
-		model.addAttribute("tweets", tweets);
-		return "home";
+		if(auth.getAuthorities().stream().count() > 0){
+			List<Tweet> tweets = tweetService.buscarTodos();
+			model.addAttribute("tweets", tweets);
+			return "home";
+		}
+		return "access_denied";
 	}
 	
 	

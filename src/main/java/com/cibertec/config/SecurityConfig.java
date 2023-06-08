@@ -18,11 +18,11 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/**/**").permitAll()
-		.antMatchers("/home").hasRole("USER").anyRequest().authenticated()
+		.antMatchers("/home").hasAnyRole("USER").anyRequest().authenticated()
 		.and()
 		.formLogin()
 		.loginPage("/login")
-		.successForwardUrl("/home")
+		.defaultSuccessUrl("/home")
 		.permitAll()
 		.and()
 		.logout().permitAll();
