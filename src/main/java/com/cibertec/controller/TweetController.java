@@ -42,25 +42,27 @@ public class TweetController {
 	}
 
 	@RequestMapping("/guardar")
-	public String grabar(@RequestParam("txtCodigo") int cod,
-		@RequestParam("idMensaje") String men,	Model model,
-	RedirectAttributes redirect) {
-		try {
-			Tweet objTweet = new Tweet();
-			
-			objTweet.setId(cod);
-			objTweet.setAuthor("hola");
-			Date defaultValue = new Date(0);
-			objTweet.setTime(defaultValue);
-			objTweet.setContent(men);
+	public String grabar(@RequestParam("txtCodigo") int txtCodigo,
+	                     @RequestParam("idMensaje") String idMensaje,
+	                     Model model,
+	                     RedirectAttributes redirect) {
+	    try {
+	        Tweet objTweet = new Tweet();
 
-			serviTweet.guardar(objTweet);
+	        objTweet.setId(txtCodigo);
+	        objTweet.setAuthor("hola");
+	        Date defaultValue = new Date(0);
+	        objTweet.setTime(defaultValue);
+	        objTweet.setContent(idMensaje);
 
-		} catch (Exception e) {
-			redirect.addAttribute("mensaje", "Ocurrió un error al intentar guardar tweet!");
-			e.printStackTrace();
-		}
-		
-		return "redirect:/tweet/lista";
+	        serviTweet.guardar(objTweet);
+
+	    } catch (Exception e) {
+	        redirect.addAttribute("mensaje", "Ocurrió un error al intentar guardar tweet!");
+	        e.printStackTrace();
+	    }
+
+	    return "redirect:/tweet/lista";
 	}
+
 }
