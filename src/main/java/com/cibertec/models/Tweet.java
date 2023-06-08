@@ -1,5 +1,6 @@
 package com.cibertec.models;
 
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tweet")
-public class Tweet implements Serializable{
+public class Tweet implements Serializable {
 	private static final long serialVersionUID = 1L;
 	public Tweet() {}
 	
@@ -34,6 +35,7 @@ public class Tweet implements Serializable{
 	@Column(name="content_tweet")
 	String content;
 	
+
 	public long getId() {
 		return id;
 	}
@@ -64,9 +66,7 @@ public class Tweet implements Serializable{
 
 	public void setContent(String content) {
 		this.content = content;
+
 	}
 
-	
-	
-	
 }

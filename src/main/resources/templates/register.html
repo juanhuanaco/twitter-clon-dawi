@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Tweet - Twitter</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+	<br>
+	<div class="container col-md-4 card shadow mt-5">
+	    <h5 class="text-center pt-3">Crear Tweet</h5>
+	    <hr>
+	    <div class="mb-0">
+	            <label class="col-form-label">Usuario: <span>Mario Mendez</span> </label> 
+	        </div>
+	    <form th:action="@{/tweet/guardar}" method="post" class="py-3 row">
+	    	<div class="mb-3">
+	            <label class="col-form-label">cod:</label> 
+	            <input type="text" class="form-control" name="txtCodigo" value="0" id="txtCodigo"> 		
+	        </div>
+	        <div class="mb-3">
+	            <label class="col-form-label">Ingrese el mensaje:</label> 
+	            <textarea class="form-control border-secondary" rows="2" id="idMensaje" name="idMensaje"  required></textarea>
+    			<span id="error-msg" class="error text-danger"></span>			
+	        </div>
+	        <hr>
+	        <div class="col-md-12 d-flex justify-content-center">
+	            <button type="submit" class="btn btn-primary me-2">Crear Tweet</button>
+	            <a class="btn btn-danger">Cancelar</a>
+	        </div>
+	    </form>
+	</div>
+	<br>
+	<br>
+		
+	<script>
+	    document.querySelector('form').addEventListener('submit', function(event) {
+	      var textarea = document.getElementById('idMensaje');
+	      var errorMsg = document.getElementById('error-msg');
+	
+	      if (textarea.value.length > 140) {
+	        event.preventDefault();
+	        errorMsg.textContent = 'El texto supera los 140 caracteres.';
+	        return;
+	      }
+	
+	      if (/\d/.test(textarea.value)) {
+	        event.preventDefault();
+	        errorMsg.textContent = 'El texto no puede contener números.';
+	        return;
+	      }
+	
+	      errorMsg.textContent = '';
+	    });
+  </script>
+</body>
+</html>
