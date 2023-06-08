@@ -19,15 +19,14 @@ public class MainController {
 	@Autowired
 	private TweetDao tweetRepository;
 	
-	@GetMapping("/")
+	@GetMapping("/login")
 	public String login() {
 		return "login";
 	}
 	
 	@GetMapping("/home")
 	public String home(){
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		return auth.getAuthorities().stream().count() > 0 ? "home" : "access_denied";
+		return "home";
 	}
 	
 	
