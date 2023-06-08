@@ -1,8 +1,13 @@
 package com.cibertec.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import javax.persistence.Column;
@@ -12,8 +17,8 @@ import javax.persistence.Id;
 
 @Entity
 @Table(name="tweet")
-public class Tweet {
-
+public class Tweet implements Serializable{
+	private static final long serialVersionUID = 1L;
 	public Tweet() {}
 	
 	public Tweet(long id, String author, Date time, String content) {
@@ -23,19 +28,16 @@ public class Tweet {
 		this.time = time;
 		this.content = content;
 	}
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_tweet")
+	@Column(name="id_tweet")
 	long id;
-	
 	@Column(name = "usu_tweet")
 	String author;
-	
-	@Column(name = "hora_tweet")
+	@Column(name="hora_tweet")
 	Date time;
-	
-	@Column(name = "content_tweet")
+	@Column(name="content_tweet")
 	String content;
 	
 	public long getId() {
@@ -69,8 +71,4 @@ public class Tweet {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-	
-	
-	
 }

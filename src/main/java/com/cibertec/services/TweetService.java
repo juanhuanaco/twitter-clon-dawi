@@ -10,7 +10,6 @@ import com.cibertec.models.Tweet;
 
 @Service
 public class TweetService {
-	
 	@Autowired
 	private TweetDao tweetRepository;
 
